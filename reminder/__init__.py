@@ -32,7 +32,6 @@ class RemainderSession(SkillSession):
 
         # record message: grammar = False because this message 
         # doesn't need translation with STT.
-        record message
         self.record( { 'grammar' : False,
                        'record_filename' : self.file_path } )
 
