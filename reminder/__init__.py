@@ -4,6 +4,11 @@
 # b) use of local stt with the possibility of switch between grammars
 #
 
+# configuration example:
+#   "RemainderSkill": {
+#    "filename": "/tmp/mycroft-recording.wav"
+#  }
+
 from adapt.intent import IntentBuilder
 from mycroft.skills.multi_thread_skill import MultiThreadSkill, SkillSession
 from mycroft.util.log import getLogger
