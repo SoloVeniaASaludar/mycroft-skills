@@ -29,8 +29,7 @@ class RemainderSession(SkillSession):
     #
     def intent_record(self, msg):
         # send audio asking for the message to be recorded
-        self.speak_dialog( 'audio.record.start',
-                           context = {"session": self.id} )
+        self.speak_dialog('audio.record.start')
 
         # wait until end of audio
         self.wait()
@@ -44,8 +43,7 @@ class RemainderSession(SkillSession):
         self.wait()
 
         # send final message
-        self.speak_dialog( 'audio.record.stop',
-                           context={ "session": self.id } )
+        self.speak_dialog('audio.record.stop')
 
 class RemainderSkill(MultiThreadSkill):
     def __init__(self):
