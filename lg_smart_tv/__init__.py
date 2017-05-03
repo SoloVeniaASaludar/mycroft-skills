@@ -13,6 +13,7 @@ import xml.etree.ElementTree as etree
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
+from mycroft.util.parse import normalize
 
 logger = getLogger(__name__)
 
@@ -33,7 +34,7 @@ class LgSmartTvSkill(MycroftSkill):
         self.conn = http.HTTPConnection(ip_address, port=8080)
 
         intent = IntentBuilder("ChangeTvChannelIntent").require(
-            "ChangeTvChannel").build()
+            "ChangeTvChannel").require("ChannelId").build()
         self.register_intent(intent, self.change_tv_channel)
 
     def send_get(self, urn):
@@ -77,6 +78,9 @@ class LgSmartTvSkill(MycroftSkill):
     # execution of command "pon canal ..."
     #
     def change_tv_channel(self, msg):
+        # logger.debug("msg.data=%s",msg.data)
+        # logger.debug("normalize utterance=%s",normalize(msg.data['utterance'],"es"))
+
         # send audio asking for the message to be recorded
         if not self.session_id:
             self.open_session()

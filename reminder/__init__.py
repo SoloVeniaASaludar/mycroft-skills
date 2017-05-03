@@ -28,6 +28,8 @@ class RemainderSession(SkillSession):
     # execution of command "graba un mensaje" 
     #
     def intent_record(self, msg):
+        logger.debug("msg=%s",msg)
+
         # send audio asking for the message to be recorded
         self.speak_dialog('audio.record.start')
 
